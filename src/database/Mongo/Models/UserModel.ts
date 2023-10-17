@@ -1,10 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { MongooseID } from "../../../types";
 
 export interface IUser extends Document {
 	username: string
     password: string
-    profilePicId: number
+    profilePicId?: number
 }
 
 const userSchema: Schema<IUser> = new Schema<IUser>({
