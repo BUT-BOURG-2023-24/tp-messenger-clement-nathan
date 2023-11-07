@@ -1,4 +1,4 @@
-const UserModel = require('../database/Mongo/Models/UserModel');
+import UserModel from '../database/Mongo/Models/UserModel';
 
 async function createUser(username: string, password: string, profilePicId?: number)
 {
@@ -17,11 +17,10 @@ async function createUser(username: string, password: string, profilePicId?: num
     }
 }
 
-async function getUserByName(name: string)
+async function getUserByName(_name: string)
 {
     try {
-        const user = await UserModel.find(name);
-        return user;
+        return await UserModel.find({name: _name});
     }
     catch (error)
     {
@@ -32,8 +31,7 @@ async function getUserByName(name: string)
 async function getUserById(id: number)
 {
     try {
-        const user = await UserModel.find(id);
-        return user;
+        return await UserModel.findById(id);
     }
     catch (error)
     {
@@ -46,7 +44,7 @@ async function getUsersByIds()
     try {
         let users:any = [];
         for (const id in arguments) {
-            users.push(UserModel.find(id));
+            users.push(UserModel.findById(id));
         }
         return users;
     }
@@ -56,7 +54,7 @@ async function getUsersByIds()
     }
 }
 
-module.exports = {
+export {
     createUser,
     getUserByName,
     getUserById,

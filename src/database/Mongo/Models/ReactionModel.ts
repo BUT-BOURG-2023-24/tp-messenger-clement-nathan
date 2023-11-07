@@ -28,4 +28,4 @@ const ReactionSchema: Schema<IReaction> = new Schema<IReaction>({
 
 const ReactionModel = mongoose.model<IReaction>("Reaction", ReactionSchema);
 
-export {ReactionModel, ReactionSchema};
+export {ReactionModel};

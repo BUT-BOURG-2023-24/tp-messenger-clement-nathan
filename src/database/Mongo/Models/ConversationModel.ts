@@ -3,23 +3,25 @@ import UserModel, {IUser} from "./UserModel";
 import {IMessage} from "./MessageModel";
 
 export interface IConversation extends Document {
-	participants: Types.DocumentArray<IUser>
-    messages: Types.DocumentArray<IMessage>
+	participants: IUser[]
+    messages: IMessage[]
     title: string
     lastUpdate: Date
     seen? : {
-        userId: number
-        messageId: number
-    }
+        userId: IUser
+        messageId: IMessage
+    }[]
 }
 
 const conversationSchema: Schema<IConversation> = new Schema<IConversation>({
 	participants: {
-        type: [Schema<IUser>],
+        type: [Schema.ObjectId],
+        ref: "IUser",
         required: true
     },
     messages: {
-        type: [Schema<IMessage>],
+        type: [Schema.ObjectId],
+        ref: "IMessage",
         required: true
     },
     title: {
@@ -32,12 +34,18 @@ const conversationSchema: Schema<IConversation> = new Schema<IConversation>({
     },
     seen: {
         type: new Schema({
-            userId: {type: Number},
-            messageId: {type: Number}
+            userId: {
+                type: Schema.ObjectId,
+                ref: "IUser"
+            },
+            messageId: {
+                type: Schema.ObjectId,
+                ref: "IMessage"
+            }
         })
     }
 });
 
 const ConversationModel = mongoose.model<IConversation>("Conversation", conversationSchema);
 
-export default ConversationModel;
+export { ConversationModel };
