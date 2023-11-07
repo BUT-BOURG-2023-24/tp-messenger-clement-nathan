@@ -16,7 +16,8 @@ export interface IReaction extends Document {
 
 const ReactionSchema: Schema<IReaction> = new Schema<IReaction>({
     user: {
-        type: Schema<IUser>,
+        type: Schema.ObjectId,
+        ref: "IUser",
         required: true
     },
     reaction: {

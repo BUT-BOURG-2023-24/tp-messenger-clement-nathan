@@ -20,7 +20,8 @@ const MessageSchema: Schema<IMessage> = new Schema<IMessage>({
         required: true
     },
     from: {
-        type: Schema<IUser>,
+        type: Schema.ObjectId,
+        ref: "IUser",
         required: true
     },
     content: {
@@ -32,7 +33,8 @@ const MessageSchema: Schema<IMessage> = new Schema<IMessage>({
         required: true
     },
     repliesTo: {
-        type: Schema<IMessage>,
+        type: Schema.ObjectId,
+        ref: "IMessage",
         required: false
     },
     isEdited: {
@@ -44,7 +46,8 @@ const MessageSchema: Schema<IMessage> = new Schema<IMessage>({
         required: true
     },
     reactions: {
-        type: [Schema<IReaction>],
+        type: [Schema.ObjectId],
+        ref: "IReaction",
         required: true
     }
 });
