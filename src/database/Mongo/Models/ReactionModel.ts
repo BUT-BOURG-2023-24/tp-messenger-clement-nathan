@@ -2,7 +2,7 @@ import mongoose, {Schema, Document} from "mongoose";
 import {MongooseID} from "../../../types";
 import UserModel, {IUser} from "./UserModel";
 
-enum ReactionModel {
+enum Reaction {
     HAPPY,
     SAD,
     THUMBSUP,
@@ -11,7 +11,7 @@ enum ReactionModel {
 }
 export interface IReaction extends Document {
     user : IUser
-    reaction : ReactionModel
+    reaction : Reaction
 }
 
 const ReactionSchema: Schema<IReaction> = new Schema<IReaction>({

@@ -1,6 +1,6 @@
 import mongoose, {Schema, Document} from "mongoose";
 import {MongooseID} from "../../../types";
-import UserModel, {IUser} from "./UserModel";
+import {IUser} from "./UserModel";
 import {IReaction} from "./ReactionModel";
 
 export interface IMessage extends Document {
