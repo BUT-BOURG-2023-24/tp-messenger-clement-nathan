@@ -1,5 +1,6 @@
 import * as http from "http";
 import express from "express";
+import cors from "cors";
 import { Server } from "socket.io";
 import { Database } from "./database/database";
 import { SocketController } from "./socket/socketController";
@@ -20,5 +21,13 @@ function makeApp(database: Database)
 
 	return { app, server };
 }
+
+app.use(cors({
+
+credentials: true,
+
+origin: "http://localhost:3000"
+
+}));
 
 export { makeApp };
