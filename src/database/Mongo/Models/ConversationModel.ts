@@ -1,5 +1,5 @@
 import mongoose, {Schema, Document, Types} from "mongoose";
-import UserModel, {IUser} from "./UserModel";
+import {IUser} from "./UserModel";
 import {IMessage} from "./MessageModel";
 
 export interface IConversation extends Document {
